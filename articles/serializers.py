@@ -3,6 +3,7 @@ from rest_framework.serializers import ModelSerializer
 from articles.models import Article, Comment
 
 
+
 class ArticleSerializer(ModelSerializer):
     class Meta:
         model = Article
