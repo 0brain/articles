@@ -3,11 +3,10 @@ from rest_framework.serializers import ModelSerializer
 from articles.models import Article, Comment
 
 
-
 class ArticleSerializer(ModelSerializer):
     class Meta:
         model = Article
-        fields = ['id', 'title', 'content']
+        fields = ['id', 'title', 'content', 'url', 'author_name']
 
 
 class CommentSerializer(ModelSerializer):

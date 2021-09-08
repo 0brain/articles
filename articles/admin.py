@@ -6,9 +6,10 @@ from articles.models import Article, Comment
 
 @admin.register(Article)
 class ArticleAdmin(ModelAdmin):
-    pass
+    list_display = ('id', 'title', 'created_at', 'author_name')
 
 
 @admin.register(Comment)
 class CommentAdmin(ModelAdmin):
-    pass
+    list_display = ('id', 'author_name')
+    list_display_links = ('id',)
