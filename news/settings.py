@@ -133,3 +133,5 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.JSONParser',
     )
 }
+
+DATETIME_FORMAT = "d M Y H:i:s"
