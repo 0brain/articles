@@ -23,14 +23,14 @@ from rest_framework_nested import routers
 router = SimpleRouter()
 router.register('articles', ArticleViewSet)
 
-comment_router = routers.NestedSimpleRouter(router, r'articles')
-comment_router.register(r'comments', CommentViewSet)
+articles_router = routers.NestedSimpleRouter(router, r'articles', lookup='article')
+articles_router.register(r'comments', CommentViewSet, basename='article-comments')
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
-    path('', include(comment_router.urls)),
+    path(r'', include(router.urls)),
+    path(r'', include(articles_router.urls)),
 ]
 
 urlpatterns += router.urls

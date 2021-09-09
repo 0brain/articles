@@ -11,7 +11,8 @@ class ArticleViewSet(ModelViewSet):
 
 class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.all()
-
     serializer_class = CommentSerializer
 
+    def get_queryset(self):
+        return Comment.objects.filter(article=self.kwargs['article_pk'])
 
