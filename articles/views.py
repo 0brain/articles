@@ -1,7 +1,12 @@
+from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 
 from articles.models import Article, Comment
 from articles.serializers import ArticleSerializer, CommentSerializer
+
+
+def index(request):
+    return render(request, 'index.html', {})
 
 
 class ArticleViewSet(ModelViewSet):
