@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Article from "./components/Articles";
@@ -9,14 +9,13 @@ function App() {
   return (
       <div className="App">
         <Router>
-          <Article/>
           <Switch>
-            <Route path="/articles/:articleId">
-                <ArticleDetails />
-            </Route>
+            <Route exact path="/" component={Article}/>
+            <Route exact path="/articles/:articleId" component={ArticleDetails}/>
           </Switch>
         </Router>
       </div>
   );
 }
+
 export default App;

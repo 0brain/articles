@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from articles.views import ArticleViewSet, CommentViewSet, index
+from articles.views import ArticleViewSet, CommentViewSet
 from rest_framework_nested import routers
 
 router = SimpleRouter()
@@ -28,7 +28,6 @@ articles_router.register(r'comments', CommentViewSet, basename='article-comments
 
 
 urlpatterns = [
-    path('', index),
     path('admin/', admin.site.urls),
     path(r'', include(router.urls)),
     path(r'', include(articles_router.urls)),

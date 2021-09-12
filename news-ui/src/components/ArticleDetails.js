@@ -10,7 +10,7 @@ function ArticleDetails() {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: `http://127.0.0.1:8086/articles/${articleId}`
+      url: `http://localhost:8086/articles/${articleId}/`
     }).then(response => {
       setArticle(response.data)
     })
@@ -18,8 +18,8 @@ function ArticleDetails() {
 
   return (
       <div>
-        <h3>${article.title}</h3>
-        <div>${article.content}</div>
+        <h3>{article.title}</h3>
+        <div>{article.content}</div>
       </div>
   );
 }
