@@ -9,11 +9,11 @@ class ArticleSerializer(ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ['id', 'title', 'url', 'created_at', 'vote', 'author_name', 'comments']
+        fields = ['id', 'title', 'url', 'created_at', 'vote', 'author_name', 'comments', 'content']
 
 
 class CommentSerializer(ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ['id', 'author_name', 'content', 'article']
+        fields = ['id', 'author_name', 'content', 'article', 'created_at']
