@@ -27,37 +27,41 @@ function ArticleDetails() {
 
   return (
       <div className="container">
-        <div className="row">
-          <div className="col">
+        <div className="row justify-content-center">
+          <div className="App-title">
             <h3>{article.title}</h3>
           </div>
+        </div>
           <div className="row">
-            <div className="col">
+            <div className="text">
               {article.content}
             </div>
           </div>
-          <div className="row">
-            <div className="col">
-              Iм’я автора: {article.author_name}
+          <div className="row justify-content-between">
+            <div className="pull-right">
+              <small>Iм’я автора: {article.author_name}</small>
             </div>
-            <div className="col">
-              Дата публікації: {article.created_at}
+            <div className="pull-right">
+              <small>Дата публікації: {article.created_at}</small>
             </div>
           </div>
-        </div>
+          <div className="row justify-content-end">
+              <div className="pull-right">
+                  <small>Кількість голосів: {article.vote}  <button type="select" class="btn btn-success">Upvote</button></small>
+              </div>
+          </div>
+
 
         <div className="row justify-content-start">
           <div className="col">
-            <div className="page-header">
-              <h1>Comments</h1>
-            </div>
             <div className="comments-list">
               {comments.map(c => (
                   <div className="media">
-                    <p className="pull-right"><small>{c.created_at}</small></p>
+
                     <div className="media-body">
-                      <h4 className="media-heading user_name">{c.author_name}</h4>
+                      <h4 className="media-heading-user_name">{c.author_name}</h4>
                       {c.content}
+                      <p className="pull-right"><small>{c.created_at}</small></p>
                     </div>
                   </div>))}
             </div>

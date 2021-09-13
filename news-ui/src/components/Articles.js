@@ -16,7 +16,12 @@ function Article() {
 
   return (
       <div className="App">
-        <h3>Список статей</h3>
+      <div className="row justify-content-center">
+          <div className="App-title">
+            <h3>Список статей</h3>
+          </div>
+        </div>
+
         <ul className="list-group">
           {
             articles.map(a => (

@@ -1,21 +1,27 @@
-.App {
-  text-align: center;
+.App-title{
+text-align: center;
+margin-bottom: 2%;
+padding: 2%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.text{
+text-align: justify;
+margin-bottom: 2%;
+margin-top: 10%;
+
+}
+.media-heading-user_name{
+margin-top: 2%;
+}
+
+.pull-right{ text-align: right;
 }
 
 .comments-list .media{
-  border-bottom: 1px dotted #ccc;
+  text-align: left;
+  border-bottom: 2px dotted #ccc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -32,11 +38,3 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
