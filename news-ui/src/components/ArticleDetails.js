@@ -46,8 +46,9 @@ function ArticleDetails() {
             </div>
           </div>
           <div className="row justify-content-end">
-              <div className="pull-right">
-                  <small>Кількість голосів: {article.vote}  <button type="select" class="btn btn-success">Upvote</button></small>
+             <div className="pull-right">
+                   <small>Кількість голосів: {article.vote}  <button class="btn btn-success">Upvote</button></small>
+
               </div>
           </div>
 
