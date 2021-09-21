@@ -47,15 +47,12 @@ function ArticleDetails() {
           </div>
           <div className="row justify-content-end">
              <div className="pull-right">
-                   Кількість голосів: {article.vote}
-
+                   <small>Кількість голосів: {article.vote}  </small>
                    <button class="btn btn-success" onClick={() => {  axios({
                    method: 'PATCH',
                    url: `http://localhost:8086/articles/${article.id}/vote/`
+                   }).then(response => { setArticle(response.data)
                    })}}>Upvote</button>
-
-
-
               </div>
           </div>
 
