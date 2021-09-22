@@ -39,15 +39,15 @@ function ArticleDetails() {
           </div>
           <div className="row justify-content-between">
             <div className="pull-right">
-              <small>Iм’я автора: {article.author_name}</small>
+              <small>Author: {article.author_name}</small>
             </div>
             <div className="pull-right">
-              <small>Дата публікації: {article.created_at}</small>
+              <small>Published: {new Date(article.created_at).toLocaleString()}</small>
             </div>
           </div>
           <div className="row justify-content-end">
              <div className="pull-right">
-                   <small>Кількість голосів: {article.vote}  </small>
+                   <small>Number of votes: {article.vote}  </small>
                    <button class="btn btn-success" onClick={() => {  axios({
                    method: 'PATCH',
                    url: `http://localhost:8086/articles/${article.id}/vote/`
@@ -66,7 +66,7 @@ function ArticleDetails() {
                     <div className="media-body">
                       <h4 className="media-heading-user_name">{c.author_name}</h4>
                       {c.content}
-                      <p className="pull-right"><small>{c.created_at}</small></p>
+                      <p className="pull-right"><small>{new Date(c.created_at).toLocaleString()}</small></p>
                     </div>
                   </div>))}
             </div>

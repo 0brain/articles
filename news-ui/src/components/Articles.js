@@ -15,14 +15,14 @@ function Article() {
   }, [])
 
   return (
-      <div className="App">
+      <div className="container">
       <div className="row justify-content-center">
           <div className="App-title">
-            <h3>Список статей</h3>
+            <h3>Articles list</h3>
           </div>
         </div>
 
-        <ul className="list-group">
+        <ul>
           {
             articles.map(a => (
                 <Link to={{pathname: `/articles/${a.id}`, fromDashboard: false}}

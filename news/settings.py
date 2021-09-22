@@ -144,4 +144,4 @@ REST_FRAMEWORK = {
     )
 }
 
-DATETIME_FORMAT = "d M Y H:i:s"
+DATETIME_FORMAT = '%Y-%m-%d %H:%M'
