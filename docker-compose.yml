@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  pgdb:
+    image: postgres
+    volumes:
+      - ./data/pgdb:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=db_news
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8086"
+    volumes:
+      - .:/code
+    ports:
+      - "8086:8086"
+    depends_on:
+      - pgdb
+volumes:
+  database-data:

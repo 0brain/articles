@@ -1,0 +1,3 @@
+docker-compose run web
+docker-compose ps
+docker-compose up
