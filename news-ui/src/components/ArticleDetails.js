@@ -14,7 +14,7 @@ function ArticleDetails() {
     }).then(response => {
       setArticle(response.data)
     })
-  }, [])
+  }, [articleId])
 
   useEffect(() => {
     axios({
@@ -23,7 +23,7 @@ function ArticleDetails() {
     }).then(response => {
       setComments(response.data)
     })
-  }, [])
+  }, [articleId])
 
   return (
       <div className="container">
