@@ -1,25 +1,31 @@
-version: "3.9"
+version: "3.3"
 
 services:
   pgdb:
     image: postgres
     volumes:
-      - ./data/pgdb:/var/lib/postgresql/data
+      - database-data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=db_news
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123456
     ports:
       - "5432:5432"
-  web:
+  articles-service:
     build: .
     command: sh -c "python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8086"
-    volumes:
-      - .:/code
     ports:
       - "8086:8086"
     depends_on:
       - pgdb
+  articles-web:
+    build: ./news-ui
+    image: nazar/article-web
+    command: npm start
+    ports:
+      - "3000:3000"
+    depends_on:
+      - articles-service
 volumes:
   database-data:
