@@ -25,9 +25,26 @@ function Article() {
         <ul>
           {
             articles.map(a => (
+
+
+
+                <div className="container">
                 <Link to={{pathname: `/articles/${a.id}`, fromDashboard: false}}
-                      className="list-group-item" key={a.id}>{a.title}</Link>))
+                className="list-group-item" key={a.id}>{a.title}</Link>
+                <div className="pull-right">
+                   <button class="btn btn-danger" onClick={() => {  axios({
+                   method: 'DELETE',
+                   url: `http://localhost:8086/articles/${a.id}/`
+                   }).then(response => { setArticles(response.data)
+                   })}}>Delete</button>
+                </div>
+                </div>
+
+                ))
+
+
           }
+
         </ul>
       </div>
   );

@@ -83,7 +83,7 @@ DATABASES = {
       'NAME': 'db_news',
       'USER': 'postgres',
       'PASSWORD': '123456',
-      'HOST': 'pgdb',
+      'HOST': 'localhost',
       'PORT': '5432',
    }
 }
