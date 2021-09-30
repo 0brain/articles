@@ -1,35 +1,38 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from 'react'
+import axios from 'axios'
+import {Link} from "react-router-dom";
 
+class PostForm extends Component {
+	constructor(props) {
+		super(props)
 
-const AddArticle = () => {
+		this.state = {
+			title: '',
+			content: '',
+			author_name: ''
+		}
+	}
 
-    let history = useHistory();
+	changeHandler = e => {
+		this.setState({ [e.target.name]: e.target.value })
+	}
 
+	submitHandler = e => {
+		e.preventDefault()
+		console.log(this.state)
+		axios
+			.post('http://127.0.0.1:8086/articles/', this.state)
+			.then(response => {
+				console.log(response)
+			})
+			.catch(error => {
+				console.log(error)
+			})
+			this.props.history.push('/');
+	}
 
-    const [title, setTitle] = useState(null)
-    const [content, setContent] = useState(null)
-    const [author_name, setAuthor_name] = useState(null)
-
-
-
-    const addNewArticle = async () => {
-        let formField = new FormData()
-        formField.append('title',title)
-        formField.append('content',content)
-        formField.append('author_name',author_name)
-
-
-        await axios({
-          method: 'post',
-          url:'http://localhost:8086/articles/',
-          data: formField
-        }).then(response=>{
-          console.log(response.data);
-          history.push('/')
-        })
-    }
+	render() {
+		const { title, content, author_name } = this.state
 
     return (
     <div className="container">
@@ -40,47 +43,47 @@ const AddArticle = () => {
 
 
 
-
+        <form onSubmit={this.submitHandler}>
           <div className="form-group">
             <input
-              type="title"
+              type="text"
               className="form-control form-control-lg"
-              placeholder="Enter article title"
+              placeholder="Enter title"
               name="title"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={this.changeHandler}
             />
           </div>
 
           <div className="form-group">
             <textarea
-              type="textarea"
-              className="form-control form-control-lg"
+              className="mt-3 form-control form-control-lg"
               rows="10"
-              placeholder="Enter article content"
+              placeholder="Enter content"
               name="content"
               value={content}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={this.changeHandler}
             />
           </div>
           <div className="form-group">
             <input
-              type="author_name"
-              className="form-control form-control-lg"
-              placeholder="Enter author name"
+              type="text"
+              className="mt-3 form-control form-control-lg"
+              placeholder="Enter your name"
               name="author_name"
               value={author_name}
-              onChange={(e) => setAuthor_name(e.target.value)}
+              onChange={this.changeHandler}
             />
           </div>
 
-          <button className="btn btn-primary btn-block" onClick={addNewArticle}>Add Article</button>
-
+          <button className="mt-3 btn btn-primary btn-block" type="submit">Add Article</button>
+        </form>
       </div>
     </div>
 
     </div>
-    );
-};
+    )
+}
+}
 
-export default AddArticle;
+export default PostForm

@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Article from "./components/Articles";
-import AddArticle from './components/AddArticle';
+import PostForm from './components/AddArticle';
 import ArticleDetails from "./components/ArticleDetails";
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/" component={Article}/>
-            <Route exact path="/articles" component={AddArticle}/>
+            <Route exact path="/articles/" component={PostForm}/>
             <Route exact path="/articles/:articleId" component={ArticleDetails}/>
           </Switch>
         </Router>

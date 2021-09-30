@@ -20,7 +20,19 @@ function Article() {
           <div className="App-title">
             <h3>Articles list</h3>
           </div>
-        </div>
+      </div>
+
+          <div class="container">
+          <div class="mb-5"><Link to="/articles/">
+              <button className="btn btn-primary btn-block" type="button">
+                  Add Article
+              </button>
+          </Link></div>
+          </div>
+
+
+
+
 
         <ul>
           {
@@ -37,6 +49,11 @@ function Article() {
                    url: `http://localhost:8086/articles/${a.id}/`
                    }).then(response => { setArticles(response.data)
                    })}}>Delete</button>
+
+
+
+                <Link className="btn btn-outline-primary mr-2" to={`/articles/${a.id}/`}>Update</Link>
+
                 </div>
                 </div>
 
