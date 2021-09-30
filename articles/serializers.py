@@ -5,7 +5,7 @@ from articles.models import Article, Comment
 
 
 class ArticleSerializer(ModelSerializer):
-    comments = serializers.StringRelatedField(many=True)
+    comments = serializers.StringRelatedField(many=True,  read_only=True)
 
     class Meta:
         model = Article
