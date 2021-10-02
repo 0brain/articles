@@ -2,38 +2,27 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from "react-router-dom";
 
-class PostForm extends Component {
-	constructor(props) {
-		super(props)
+class AddForm extends Component{
+  addArticle(newArticle){
+    axios.request({
+      method:'post',
+      url:'http://127.0.0.1:8086/articles/',
+      data: newArticle
+    }).then(response => {
+      this.props.history.push('/');
+    }).catch(err => console.log(err));
+  }
 
-		this.state = {
-			title: '',
-			content: '',
-			author_name: ''
-		}
-	}
-
-	changeHandler = e => {
-		this.setState({ [e.target.name]: e.target.value })
-	}
-
-	submitHandler = e => {
-		e.preventDefault()
-		console.log(this.state)
-		axios
-			.post('http://127.0.0.1:8086/articles/', this.state)
-			.then(response => {
-				console.log(response)
-			})
-			.catch(error => {
-				console.log(error)
-			})
-			this.props.history.push('/');
-	}
-
-	render() {
-		const { title, content, author_name } = this.state
-
+  onSubmit(e){
+    const newArticle = {
+      title: this.refs.title.value,
+      content: this.refs.content.value,
+      author_name: this.refs.author_name.value
+    }
+    this.addArticle(newArticle);
+    e.preventDefault();
+  }
+  render(){
     return (
     <div className="container">
 
@@ -43,15 +32,14 @@ class PostForm extends Component {
 
 
 
-        <form onSubmit={this.submitHandler}>
+        <form onSubmit={this.onSubmit.bind(this)}>
           <div className="form-group">
             <input
               type="text"
               className="form-control form-control-lg"
               placeholder="Enter title"
               name="title"
-              value={title}
-              onChange={this.changeHandler}
+              ref="title"
             />
           </div>
 
@@ -61,8 +49,8 @@ class PostForm extends Component {
               rows="10"
               placeholder="Enter content"
               name="content"
-              value={content}
-              onChange={this.changeHandler}
+              ref="content"
+
             />
           </div>
           <div className="form-group">
@@ -71,12 +59,11 @@ class PostForm extends Component {
               className="mt-3 form-control form-control-lg"
               placeholder="Enter your name"
               name="author_name"
-              value={author_name}
-              onChange={this.changeHandler}
+              ref="author_name"
             />
           </div>
 
-          <button className="mt-3 btn btn-primary btn-block" type="submit">Add Article</button>
+          <button className="mt-3 btn btn-primary btn-block" type="submit">Add</button>
         </form>
       </div>
     </div>
@@ -86,4 +73,4 @@ class PostForm extends Component {
 }
 }
 
-export default PostForm
+export default AddForm

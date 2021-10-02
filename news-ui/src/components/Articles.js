@@ -23,7 +23,7 @@ function Article() {
       </div>
 
           <div class="container">
-          <div class="mb-5"><Link to="/articles/">
+          <div class="mb-5"><Link to="/articles/add_article">
               <button className="btn btn-primary btn-block" type="button">
                   Add Article
               </button>
@@ -42,13 +42,21 @@ function Article() {
 
                 <div className="container">
                 <Link to={{pathname: `/articles/${a.id}`, fromDashboard: false}}
-                className="list-group-item" key={a.id}>{a.title}</Link>
+                className="list-group-item" key={a.id}>{a.title}</Link><button class="btn btn-danger" onClick={() => {  axios({
+                   method: 'DELETE',
+                   url: `http://localhost:8086/articles/${a.id}/`
+                   }).then(response => { setArticles(response.data)
+                   })}}>Delete</button>
+
+
                 <div className="pull-right">
                    <button class="btn btn-danger" onClick={() => {  axios({
                    method: 'DELETE',
                    url: `http://localhost:8086/articles/${a.id}/`
                    }).then(response => { setArticles(response.data)
                    })}}>Delete</button>
+
+
 
 
 
