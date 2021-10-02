@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function ArticleDetails() {
   const [article, setArticle] = useState({})
@@ -53,6 +54,15 @@ function ArticleDetails() {
                    url: `http://localhost:8086/articles/${article.id}/vote/`
                    }).then(response => { setArticle(response.data)
                    })}}>Upvote</button>
+
+
+                  <Link to={`/articles/edit_article/${article.id}`}>
+                  <button className="btn btn-primary btn-block" type="button">
+                  Edit an Article
+                  </button>
+                  </Link>
+
+
               </div>
           </div>
 
