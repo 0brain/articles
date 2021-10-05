@@ -9,8 +9,7 @@ class EditForm extends Component{
     this.state = {
       id:'',
       title:'',
-      content:'',
-      author_name:''
+      content:''
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -102,7 +101,7 @@ class EditForm extends Component{
           </div>
           <div className="form-group">
             <input
-              type="text"
+              type="hidden"
               className="mt-3 form-control form-control-lg"
               placeholder="Enter your name"
               name="author_name"
