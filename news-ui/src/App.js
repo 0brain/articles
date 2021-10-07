@@ -6,6 +6,7 @@ import Article from "./components/Articles";
 import AddForm from './components/AddArticle';
 import EditForm from './components/EditArticle';
 import ArticleDetails from "./components/ArticleDetails";
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/articles/add_article" component={AddForm}/>
             <Route exact path="/articles/edit_article/:id" component={EditForm}/>
             <Route exact path="/articles/:articleId" component={ArticleDetails}/>
+            <Route component={NotFound} />
           </Switch>
         </Router>
       </div>
