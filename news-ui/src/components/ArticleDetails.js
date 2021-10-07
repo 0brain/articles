@@ -38,6 +38,11 @@ function ArticleDetails() {
 
   return (
       <div className="container">
+      <div className="coll-left">
+                  <Link to={`/`} className="mt-3 btn btn-primary btn-block" type="button">
+                  Back
+                  </Link>
+      </div>
         <div className="row justify-content-center">
           <div className="App-title">
             <h3>{article.title}</h3>

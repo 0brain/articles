@@ -23,10 +23,8 @@ function Article() {
       </div>
 
           <div class="container">
-          <Link to="/articles/add_article">
-              <button className="mb-5 btn btn-primary btn-block" type="button">
+          <Link to="/articles/add_article" className="mb-5 btn btn-primary btn-block" type="button">
                   Add Article
-              </button>
           </Link>
           </div>
 
