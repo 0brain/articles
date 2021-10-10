@@ -12,6 +12,9 @@ class Article(models.Model):
     def __str__(self):
         return f"id {self.id}: {self.title}"
 
+    class Meta:
+        ordering = ['-created_at', 'title']
+
 
 class Comment(models.Model):
     article = models.ForeignKey(Article, related_name='comments', on_delete=models.CASCADE)
